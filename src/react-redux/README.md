@@ -156,6 +156,8 @@ function combineReducers(stateTree) {
 
 #### 1.3. Apply MiddleWare
 
+In a nutshell, middleware is a convenient way that frameworks allow you to inject your own code when certain events happen. Redux-logger is a great example of Redux middleware that you can apply to your app. This middleware will log state changes to your console. 
+
 the createStore() receives another param:
 ```JavaScript
 var store = createStore(
@@ -186,13 +188,13 @@ function logger(store) {
   };
 }
 ```
-and the applyMiddleware function that:
--  returns a function getting as param createStore, that returned function when called, returns another function;
--  the inner returned function creates a store, modifies dispatch so that it will call the middleware and returns the store with that modified dispatch
+and the applyMiddleware function is basically an enhancer function that:
+-  returns a function getting as param createStore,and this returned function when called, returns another function;
+-  the inner returned function creates a store, modifies dispatch so that it will call the middleware and then returns the store with that modified dispatch
 
 ```JavaScript
 function applyMiddleware(...fns) {
-  // destructuring assignment or reducer used as param in function definition, takes all params passed and makes an array named fns 
+  // destructuring assignment or reducer used as param in function definition, takes all params passed and makes an array named fns =  the list of middlewares
   return function (createStore) {
 
     return function (reducer) {
@@ -200,6 +202,7 @@ function applyMiddleware(...fns) {
       var oldDispatch = store.dispatch;
 
       // modify dispatch
+      // use  reduceRight that starts from the end of fns array
       store.dispatch = fns.reduceRight(function (prev, curr) {
         return curr(store)(prev); // ie: dispatch = logger(store)(oldDispatch)
       }, oldDispatch)
@@ -208,6 +211,16 @@ function applyMiddleware(...fns) {
     }
   }
 
+}
+```
+So, the function declaration becomes:
+
+```JavaScript
+function createStore(reducer, enhancer) {
+    if (typeof enhancer === "function") {
+        return enhancer(createStore)(reducer);
+    }
+    // ...
 }
 ```
 - after you run `node index.js` you'll get:

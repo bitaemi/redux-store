@@ -3,14 +3,16 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Build a Store using Reactive Programming Style](#build-a-store-using-reactive-programming-style)
-  - [Redux Architecture](#redux-architecture)
-  - [Implement Redux Store](#implement-redux-store)
+  - [I. Redux Architecture](#i-redux-architecture)
+  - [II a. Implement Tiny Redux Store in Angular](#ii-a-implement-tiny-redux-store-in-angular)
+  - [II b. Implement Tiny Redux Store in React](#ii-b-implement-tiny-redux-store-in-react)
+  - [II c. Implement Tiny Redux Store in Vue](#ii-c-implement-tiny-redux-store-in-vue)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Build a Store using Reactive Programming Style
 
-### Redux Architecture
+### I. Redux Architecture
 
  Why REACTIVE:
 
@@ -38,7 +40,7 @@ respond to action types, returning a new state.
 
 Both in a) and b) rective styles we use immutable update patterns: 
 
-![One-way DataFlow Diagram](reactive-dataFlow.png)
+![One-way DataFlow Diagram](reactive-data-flow.png)
 
 we do not change the data stream from the input, but rather obtain a new data, and use it.
 
@@ -64,7 +66,7 @@ Use immutable data(by default objects, arrays are mutable and are passed by refe
     - monitor/observe changes to state
 
 
-### Implement Redux Store
+### II a. Implement Tiny Redux Store in Angular
 
 `npm install awesome-typescript-loader --save-dev`
 
@@ -169,3 +171,7 @@ const ToDOListStore = new store.Store(reducers);
 ToDOListStore.dispatch(new store.AddTodo(todo));
 // ..
 ```
+
+### [II b. Implement Tiny Redux Store in React](./src/react-redux/README.md)
+### [II c. Implement Tiny Redux Store in Vue](./src/vue-redux/README.md)
+
