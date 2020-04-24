@@ -186,9 +186,9 @@ function logger(store) {
   };
 }
 ```
-and the applyMiddleware function that:
--  returns a function getting as param createStore, that returned function when called, returns another function;
--  the inner returned function creates a store, modifies dispatch so that it will call the middleware and returns the store with that modified dispatch
+and the applyMiddleware function is basically an enhancer function that:
+-  returns a function getting as param createStore,and this returned function when called, returns another function;
+-  the inner returned function creates a store, modifies dispatch so that it will call the middleware and then returns the store with that modified dispatch
 
 ```JavaScript
 function applyMiddleware(...fns) {
@@ -208,6 +208,16 @@ function applyMiddleware(...fns) {
     }
   }
 
+}
+```
+So, the function declaration becomes:
+
+```JavaScript
+function createStore(reducer, enhancer) {
+    if (typeof enhancer === "function") {
+        return enhancer(createStore)(reducer);
+    }
+    // ...
 }
 ```
 - after you run `node index.js` you'll get:
