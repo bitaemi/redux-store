@@ -173,5 +173,5 @@ ToDOListStore.dispatch(new store.AddTodo(todo));
 ```
 
 ### [II b. Implement Tiny Redux Store in React](./src/react-redux/README.md)
-### [II c. Implement Tiny Redux Store in Vue](./src/vue-redux/README.md)
+### [II c. Implement Tiny Redux Store in Vue](https://github.com/bitaemi/vue-firebase-real-time/blob/vue-redux-store/src/redux/README.md)
 
