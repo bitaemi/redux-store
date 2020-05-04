@@ -173,5 +173,11 @@ ToDOListStore.dispatch(new store.AddTodo(todo));
 ```
 
 ### [II b. Implement Tiny Redux Store in React](./src/react-redux/README.md)
+Follow link below. Also:
+
+In React, we can use Hooks in order to prevent cases of components with too many properties. Thus, for big abstractions, we just use the componanet based on that big abstraction and apply reducers in order to easily change the UI. Combine your reducers and thus simply cange the state of the reusable component based on that big abstraction.
+
+For details check: [https://www.youtube.com/watch?v=MEeZLM1XVLI](https://www.youtube.com/watch?v=MEeZLM1XVLI)
+
 ### [II c. Implement Tiny Redux Store in Vue](https://github.com/bitaemi/vue-firebase-real-time/blob/vue-redux-store/src/redux/README.md)
 
